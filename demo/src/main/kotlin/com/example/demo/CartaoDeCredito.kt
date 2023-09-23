@@ -14,6 +14,6 @@ data class CartaoDeCredito(
     @Column(name = "fatura_id") // Coluna para representar o ID da Fatura relacionada
     var faturaId: Long? = null, // Agora é um tipo primitivo (ID da Fatura)
 
-    var histCompra: String = "",
+    var histCompra: List<Long> = mutableListOf(), //lista dos Ids das faturas
     var status: String = ""
 )

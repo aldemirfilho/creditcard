@@ -20,6 +20,15 @@ class FaturaController(private val repository: FaturaRepository) {
             ResponseEntity.ok(it)
         }.orElse(ResponseEntity.notFound().build())
 
+    @PutMapping("/{id}")
+    fun update(@PathVariable id: Long, @RequestBody fatura: Fatura): ResponseEntity<Fatura> =
+        repository.findById(id).map {
+            val accountToUpdate = it.copy(
+                status = fatura.status
+            )
+            ResponseEntity.ok(repository.save(accountToUpdate))
+        }.orElse(ResponseEntity.notFound().build())
+
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long): ResponseEntity<Void> =
         repository.findById(id).map {

@@ -11,5 +11,5 @@ data class Cliente(
     var id: Long? = null,
     var nome: String = "",
     var CPF: String = "",
-    var cartoes: List<String> = mutableListOf()
+    var cartoes: List<String> = mutableListOf() //numero dos cartoes
 )
